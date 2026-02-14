@@ -1,0 +1,431 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dracula-bg: #282a36;
+  --color-dracula-text: #f8f8f2;
+  --color-warm-bg: #fdf6e3;
+  --color-warm-text: #2d2d2d;
+}
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Theme Toggle */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 2.2em;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2a2a2a;
+  transition: 0.4s;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 20px;
+  left: 0.5em;
+  bottom: 0.5em;
+  transition: 0.4s;
+  transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+  box-shadow: inset 8px -4px 0px 0px #fff;
+}
+
+.switch input:checked+.slider {
+  background-color: #00a6ff;
+}
+
+.switch input:checked+.slider:before {
+  transform: translateX(1.8em);
+  box-shadow: inset 15px -4px 0px 15px #ffcf48;
+}
+
+.star {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  transition: all 0.4s;
+  height: 5px;
+}
+
+.star_1 {
+  left: 2.5em;
+  top: 0.5em;
+}
+
+.star_2 {
+  left: 2.2em;
+  top: 1.2em;
+}
+
+.star_3 {
+  left: 3em;
+  top: 0.9em;
+}
+
+.switch input:checked~.slider .star {
+  opacity: 0;
+}
+
+.cloud {
+  width: 3.5em;
+  position: absolute;
+  bottom: -1.4em;
+  left: -1.1em;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.switch input:checked~.slider .cloud {
+  opacity: 1;
+}
+
+/* Loader */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #282a36;
+  /* Default dark */
+}
+
+.loader {
+  width: 100%;
+  max-width: 500px;
+  /* Limit size */
+}
+
+.trace-bg {
+  stroke: #333;
+  stroke-width: 1.8;
+  fill: none;
+}
+
+.trace-flow {
+  stroke-width: 1.8;
+  fill: none;
+  stroke-dasharray: 40 400;
+  stroke-dashoffset: 438;
+  filter: drop-shadow(0 0 6px currentColor);
+  animation: flow 3s cubic-bezier(0.5, 0, 0.9, 1) infinite;
+}
+
+.yellow {
+  stroke: #ffea00;
+  color: #ffea00;
+}
+
+.blue {
+  stroke: #00ccff;
+  color: #00ccff;
+}
+
+.green {
+  stroke: #00ff15;
+  color: #00ff15;
+}
+
+.purple {
+  stroke: #9900ff;
+  color: #9900ff;
+}
+
+.red {
+  stroke: #ff3300;
+  color: #ff3300;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.chip-body {
+  rx: 20;
+  ry: 20;
+}
+
+.chip-text {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.chip-pin {
+  stroke: #444;
+  stroke-width: 0.5;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+}
+
+/* Profile Frame */
+.card {
+  margin: auto;
+  width: min(300px, 100%);
+  background-color: #fefefe;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: #141417;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.card__hero {
+  background-color: #fef4e2;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Removed .card__job-title as it's not in the request structure, but keeping styles if needed */
+.card__hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 0.75rem;
+  row-gap: 1rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 340px) {
+  .card__footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* Centered based on lack of side content */
+    gap: 1rem;
+  }
+}
+
+.card__job-summary {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+}
+
+.card__btn {
+  width: 100%;
+  font-weight: 400;
+  border: none;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 1rem;
+  background-color: #141417;
+  color: #fff;
+  font-size: 1rem;
+}
+
+@media (min-width: 340px) {
+  .card__btn {
+    width: max-content;
+  }
+}
+
+@layer utilities {
+  .holo-card {
+    @apply border border-cyan-500/30 bg-black/60 backdrop-blur-md shadow-[0_0_15px_#06b6d426] rounded-lg;
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #00fff9;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(31px, 9999px, 94px, 0);
+  }
+
+  4.166666667% {
+    clip: rect(91px, 9999px, 43px, 0);
+  }
+
+  8.333333333% {
+    clip: rect(6px, 9999px, 83px, 0);
+  }
+
+  12.5% {
+    clip: rect(72px, 9999px, 3px, 0);
+  }
+
+  16.66666667% {
+    clip: rect(9px, 9999px, 66px, 0);
+  }
+
+  20.83333333% {
+    clip: rect(96px, 9999px, 76px, 0);
+  }
+
+  25% {
+    clip: rect(10px, 9999px, 9px, 0);
+  }
+
+  29.16666667% {
+    clip: rect(3px, 9999px, 38px, 0);
+  }
+
+  33.33333333% {
+    clip: rect(93px, 9999px, 57px, 0);
+  }
+
+  37.5% {
+    clip: rect(59px, 9999px, 20px, 0);
+  }
+
+  41.66666667% {
+    clip: rect(94px, 9999px, 63px, 0);
+  }
+
+  45.83333333% {
+    clip: rect(13px, 9999px, 34px, 0);
+  }
+
+  50% {
+    clip: rect(25px, 9999px, 27px, 0);
+  }
+
+  54.16666667% {
+    clip: rect(81px, 9999px, 86px, 0);
+  }
+
+  58.33333333% {
+    clip: rect(26px, 9999px, 27px, 0);
+  }
+
+  62.5% {
+    clip: rect(48px, 9999px, 61px, 0);
+  }
+
+  66.66666667% {
+    clip: rect(13px, 9999px, 88px, 0);
+  }
+
+  70.83333333% {
+    clip: rect(13px, 9999px, 68px, 0);
+  }
+
+  75% {
+    clip: rect(98px, 9999px, 85px, 0);
+  }
+
+  79.16666667% {
+    clip: rect(38px, 9999px, 26px, 0);
+  }
+
+  83.33333333% {
+    clip: rect(2px, 9999px, 39px, 0);
+  }
+
+  87.5% {
+    clip: rect(18px, 9999px, 58px, 0);
+  }
+
+  91.66666667% {
+    clip: rect(27px, 9999px, 95px, 0);
+  }
+
+  95.83333333% {
+    clip: rect(2px, 9999px, 49px, 0);
+  }
+
+  100% {
+    clip: rect(31px, 9999px, 94px, 0);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(65px, 9999px, 100px, 0);
+  }
+
+  100% {
+    clip: rect(10px, 9999px, 81px, 0);
+  }
+}
+
+/* Blinking Cursor */
+.blinking-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
