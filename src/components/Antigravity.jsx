@@ -5,8 +5,8 @@ import * as THREE from 'three';
 
 const AntigravityInner = ({
     count = 300,
-    magnetRadius = 10,
-    ringRadius = 10,
+    magnetRadius = 15,
+    ringRadius = 15,
     waveSpeed = 0.4,
     waveAmplitude = 1,
     particleSize = 2,
@@ -18,7 +18,7 @@ const AntigravityInner = ({
     depthFactor = 1,
     pulseSpeed = 3,
     particleShape = 'capsule',
-    fieldStrength = 10
+    fieldStrength = 15
 }) => {
     const meshRef = useRef(null);
     const { viewport } = useThree();
