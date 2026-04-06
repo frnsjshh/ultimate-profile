@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import profilePic from './assets/profile.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import Antigravity from './components/Antigravity';
 import ThemeToggle from './components/ThemeToggle';
@@ -116,8 +117,8 @@ function App() {
               >
                 <ProfileFrame
                   name="Francis Joshua Gacutno"
-                  jobTitle="Kung kaya nila, sila ipabuhat"
-                  imageUrl="/profile.png"
+                  jobTitle="Kung kaya nila, sa ilaha ipabuhat"
+                  imageUrl={profilePic}
                 />
               </motion.div>
 
